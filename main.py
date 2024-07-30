@@ -26,7 +26,7 @@ class KeywordQueryEventListener(EventListener):
                                         name=results['res'],
                                         source_lang=results['source_lang'],
                                         target_lang=results['target_lang'],
-                                        on_enter=CopyToClipboardAction(results['title'])))
+                                        on_enter=CopyToClipboardAction(results['res'])))
 
         return RenderResultListAction(items)
 
