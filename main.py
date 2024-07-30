@@ -7,7 +7,7 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 
 from deeplx import translation
-
+import json
 
 class DemoExtension(Extension):
 
@@ -20,12 +20,16 @@ class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
         query = event.get_argument() or ""
+        data = {
+                "text": query.split(" ")[2],
+                "source_lang": query.split(" ")[1].split(":")[0],
+                "target_lang": query.split(" ")[1].split(":")[1],
+            }
+        post_data = json.dumps(data)
         items = []
-        results = translation(query)
+        results = translation(post_data)
         items.append(ExtensionResultItem(icon=results['icon'],
                                         name=results['data'],
-                                        source_lang=results['source_lang'],
-                                        target_lang=results['target_lang'],
                                         on_enter=CopyToClipboardAction(results['data'])))
 
         return RenderResultListAction(items)
