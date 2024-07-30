@@ -29,7 +29,7 @@ class KeywordQueryEventListener(EventListener):
         items = []
         results = translation(post_data)
         items.append(ExtensionResultItem(icon=results['icon'],
-                                        name=results['data'],
+                                        name=results['alternatives'] + results["data"],
                                         on_enter=CopyToClipboardAction(results['data'])))
 
         return RenderResultListAction(items)

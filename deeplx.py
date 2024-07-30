@@ -19,10 +19,10 @@ post_data = json.dumps(data)
 def translation(query):
     deeplx_api = "http://127.0.0.1:1188/translate"
     rt = httpx.post(url = deeplx_api, data = query).json()
-    return rt["alternatives"],rt["data"]
+    return rt
 
 if __name__ == '__main__':
     r = translation(post_data)
-    for i in r[0]:
+    for i in r["alternatives"]:
         print(i)
-    print(r[1] )
+    print(r["data"] )
