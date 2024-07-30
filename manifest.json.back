@@ -15,6 +15,11 @@
       "default_value": "tr"
     },
     {
+      "id": "api_key",
+      "type": "input",
+      "name": "DeepL API key"
+    },
+    {
       "id": "source_language",
       "type": "input",
       "name": "Source language",
