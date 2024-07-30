@@ -12,16 +12,9 @@ data = {
 post_data = json.dumps(data)
 
 def translation(query):
-    items = []
     rt = httpx.post(url = deeplx_api, data = query).json()
     print(rt)
-    items.append(dict(
-        res= rt["data"],
-        source_lang=rt["source_lang"],
-        target_lang=rt["target_lang"],
-        icon = "images/icon.png"
-	))
-    return items
+    return rt
 
 if __name__ == '__main__':
 	r = translation(post_data)

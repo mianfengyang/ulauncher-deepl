@@ -23,10 +23,10 @@ class KeywordQueryEventListener(EventListener):
         items = []
         results = translation(query)
         items.append(ExtensionResultItem(icon=results['icon'],
-                                        name=results['res'],
+                                        name=results['data'],
                                         source_lang=results['source_lang'],
                                         target_lang=results['target_lang'],
-                                        on_enter=CopyToClipboardAction(results['res'])))
+                                        on_enter=CopyToClipboardAction(results['data'])))
 
         return RenderResultListAction(items)
 
