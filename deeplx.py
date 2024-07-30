@@ -18,7 +18,7 @@ data = {
 post_data = json.dumps(data)
 
 def translation(query):
-    deeplx_api = "http://127.0.0.1:1188/translate"
+    deeplx_api = "http://192.168.1.7:1188/translate"
     rt = httpx.post(url = deeplx_api, data = query).json()
     print(rt)
     return rt
