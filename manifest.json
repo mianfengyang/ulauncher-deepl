@@ -8,9 +8,9 @@
     {
       "id": "keyword",
       "type": "keyword",
-      "name": "tr",
+      "name": "tx",
       "description":"Translate text using DeepLx",
-      "default_value": "tr"
+      "default_value": "tx"
     }
   ]
 }
