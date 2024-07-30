@@ -22,14 +22,14 @@ class KeywordQueryEventListener(EventListener):
         query = event.get_argument() or ""
         data = {
                 "text": query.split(" ")[2],
-                "source_lang": query.split(" ")[1].split(":")[0],
-                "target_lang": query.split(" ")[1].split(":")[1],
+                "source_lang": query.split(" ")[1].split(":")[0].upper(),
+                "target_lang": query.split(" ")[1].split(":")[1].upper(),
             }
         post_data = json.dumps(data)
         items = []
         results = translation(post_data)
         items.append(ExtensionResultItem(icon=results['icon'],
-                                        name=results['alternatives'] + results["data"],
+                                        name=results['alternatives'].append(results['data']),
                                         on_enter=CopyToClipboardAction(results['data'])))
 
         return RenderResultListAction(items)
